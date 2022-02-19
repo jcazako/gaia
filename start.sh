@@ -1,13 +1,28 @@
 #/bin/bash
 
-if [ "$1" == "js" ]
-then
-  echo 'Got a js project to start'
-fi
+CONFIG="/Users/$USER/.config/gaia/"
 
-if [ "$1" == "sh" ]
+#alias vs="open -a \"visual studio code\""
+
+cd ~/workdir;
+TARGET=$(date "+%Y/%m/%d")/$(date | md5);
+mkdir -p $TARGET && cd $TARGET;
+git init
+
+if [ "$1" == "js" ]
+then 
+  cp $CONFIG/README.md $CONFIG/.gitignore .;
+  npm init -y;
+  npm i -D jest;
+  mkdir lib;
+  touch lib/index.js;
+  echo 'Initiated Javascript project at ' $TARGET
+  #vs .;
+elif [ "$1" == "sh" ]
 then
-  echo 'Got a shell project to start'
+  echo 'Iniiated shell script project at ' $TARGET
+  #vs .
 else
-  echo 'Default project'
+  echo 'Initiated Default project at' $TARGET
+  #vs .
 fi
