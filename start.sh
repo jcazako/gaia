@@ -1,6 +1,6 @@
 #/bin/bash
 
-CONFIG="/Users/$USER/.config/gaia/"
+CONFIG_PATH="/Users/$USER/.config/gaia/"
 
 #alias vs="open -a \"visual studio code\""
 
@@ -11,11 +11,12 @@ git init
 
 if [ "$1" == "js" ]
 then 
-  cp $CONFIG/README.md $CONFIG/.gitignore .;
+  cp $CONFIG_PATH/README.md $CONFIG_PATH/.gitignore .;
   npm init -y;
-  npm i -D jest;
-  mkdir lib;
+  npm i -D jest @babel/cli @babel/core @babel/preset-env babel-jest;
+  mkdir lib test;
   touch lib/index.js;
+  touch test/indx.spec.js;
   echo 'Initiated Javascript project at ' $TARGET
   #vs .;
 elif [ "$1" == "sh" ]
